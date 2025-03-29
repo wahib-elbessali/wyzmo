@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/register.css" />
+</head>
+<body>
+    <div id="error" style="z-index: 9999;">
+        <div class="borderv2">
+            <div class=""></div>
+            Some error ...
+        </div>
+    </div>
+    <div>
+        <h1>Register</h1>
+        <form>
+
+            <div class="name-fields">
+                <div class="firstname">
+                    <label for="fname">First name:</label><br>
+                    <input type="text" id="fname" name="fname" class="borderv1">
+                </div>
+                <div class="lastname">
+                    <label for="lname">Last name:</label><br>
+                    <input type="text" id="lname" name="lname" class="borderv2">
+                </div>
+            </div><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="borderv1"><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="borderv2"><br>
+
+            <label for="con-password">Confirm Password:</label>
+            <input type="password" id="con-password" name="con-password" class="borderv1"><br>
+
+            <div class="role-selection">
+                <span>Role:</span><br/>
+                <label for="professeur">
+                    <input type="radio" id="professeur" name="role" value="PROFESSEUR">
+                    <div class="circlev1"><div></div></div> Professor
+                </label>
+            
+                <label for="student">
+                    <input type="radio" id="student" name="role" value="STUDENT">
+                    <div class="circlev1"><div></div></div> Student
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn borderv1">Register</button>
+
+        </form>
+        <div style="margin-top: 15px;">Already have an account? <a href="/login">Login here</a></div>
+    </div>
+    <script src="/public/js/register.js"></script>
+</body>
+</html>

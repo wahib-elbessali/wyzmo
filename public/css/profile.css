@@ -1,0 +1,69 @@
+body {
+    font-family: 'Patrick Hand', cursive;
+    margin: 0;
+    background-color: #f9f9f9;
+    height: 100vh;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    margin: 0;
+  }
+
+  #profileButton{
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+  }
+
+  #profileButton div {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+  }
+
+  .container{
+    height: 80%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+  }
+
+  main {
+    padding: 20px;
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+  }
+
+  main > div:first-child{
+    background-color: azure;
+  }
+
+  #userInfo p {
+    margin: 0 0 10px;
+    font-size: xx-large;
+  }
+
+
+
+  p strong{
+    opacity: 0.6;
+    font-size: x-large;
+  }
+
+  #logo{
+    cursor: pointer;
+  }

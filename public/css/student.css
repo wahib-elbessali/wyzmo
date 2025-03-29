@@ -1,0 +1,345 @@
+body {
+    font-family: "Patrick Hand", cursive;
+    font-weight: 400;
+    font-size: calc(large * 0.5);
+    font-style: normal;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header"
+      "container";
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    grid-area: header;
+    height: 35px;
+    position: sticky;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: "sidebar main";
+    height: 100%;
+    grid-area: container;
+  }
+  
+  aside {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-right: 2px solid black;
+    grid-area: sidebar;
+  }
+  
+  button.borderv1, button.borderv2, button.borderv3{
+    font-family: "Patrick Hand", cursive;
+    border-width: 2px;
+    font-size: large;
+    text-decoration: none;
+    background-color: azure;
+  }
+  
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    grid-area: main;
+  }
+  
+  .main-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .name-search {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .name-search > input {
+    width: 20%;
+    height: 20px;
+  }
+  
+  .name-search > h1 {
+    margin: 0;
+    font-size: 60px;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 20px;
+  }
+  
+  button.bottom-border {
+    background: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+    font-size: 28px;
+  }
+  
+  #kanbanBoard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 0;
+  
+  }
+  
+  #kanbanBoard > div {
+    height: fit-content;
+    transition: height 0.2s;
+  
+  }
+  
+  .dragging {
+    opacity: 0.5;
+    transform: scale(1.05);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  
+  .drag-over {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s;
+  }
+  
+  #todoTasks,
+  #inProgressTasks,
+  #completedTasks {
+    min-height: 100px;
+    height: auto;
+    transition: background-color 0.2s;
+    height:  600px;
+    overflow-y: scroll;
+  }
+  
+  #todoTasks > div,
+  #inProgressTasks > div,
+  #completedTasks > div {
+    margin-bottom: 20px;
+    height: min-content;
+    cursor: grab;
+    transition: transform 0.2s, opacity 0.2s;
+    
+  }
+  
+  #todoTasks > div > div,
+  #inProgressTasks > div > div,
+  #completedTasks > div > div {
+    background-color: aliceblue;
+  }
+  
+  #todoTasks  h2,
+  #inProgressTasks  h2,
+  #completedTasks  h2 {
+    margin: 5px;
+    padding: 5px;
+   
+  }
+  
+  #todoTasks  p,
+  #inProgressTasks  p,
+  #completedTasks  p {
+    margin: 5px;
+    padding: 5px;
+   
+  }
+  
+  #todoTasks,
+  #inProgressTasks,
+  #completedTasks {
+    min-height: 100px;
+    height: auto;
+  }
+  
+  .placeholder {
+    border: 2px dashed;
+    margin: 5px 0;
+  }
+  
+  .column {
+    padding: 20px;
+    border: 2px solid black;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  nav{
+    margin-top: 20px;
+    height: 65vh;
+    overflow-y: scroll;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    font-size: 30px;
+  }
+  
+  nav ul li {
+    margin-bottom: 10px;
+  }
+  
+  summary.project-name {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  summary {
+    list-style: none;
+  }
+  
+  summary::marker {
+    display: none;
+  }
+  
+  .workspace-chat {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .workspace-chat button {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  input {
+    background-color: azure !important;
+    border-width: 2px !important;
+  }
+  
+  .borderv3.dragging {
+    opacity: 1;
+  }
+  
+  [draggable="true"] {
+    transition: opacity 0.2s;
+  }
+  
+  .truncate {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .modal-content>div{
+    background-color: #fefefe;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  
+  .importance {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+  
+  .importance > div {
+    height: 100%;
+    width: 100%;
+    
+  }
+  
+  .kanban-legend {
+    display: flex;
+    gap: 20px;
+    margin: 15px 0;
+    padding: 10px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Patrick Hand', cursive;
+  }
+  
+  #modalTaskName{
+    margin-bottom: 0;
+  }
+  
+  #modalTaskId{
+    margin-top: 5px;
+    color: #aaa;
+  }
+  
+  .importance {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  
+  }
+  
+  #todoTasks,
+  #inProgressTasks,
+  #completedTasks {
+    box-sizing: border-box;
+    padding: 1px;
+    height: 50vh;
+    margin-bottom: 8px;
+  
+  }
+  
+  #todoTasks::-webkit-scrollbar,
+  #inProgressTasks::-webkit-scrollbar,
+  #completedTasks::-webkit-scrollbar,
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+  

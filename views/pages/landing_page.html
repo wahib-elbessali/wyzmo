@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wyzmo</title>
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/professeur.css" />
+    <style>
+      .body{
+        height: 100vh;
+      }
+
+      .container{
+        display: flex;
+        height: 100%;
+      }
+
+      .l, .r {
+        flex: 1;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        margin: 5%;
+      }
+
+      .l > div{
+        font-size: xx-large;
+      }
+
+      .l h1{
+        margin: 0;
+        font-size: 50px
+      }
+
+
+    </style>
+</head>
+<body>
+    <header class="bottom-border">
+        <div></div>
+        <div>
+          <h1>Wyzmo</h1>
+        </div>
+        <div class="header-right">
+          <button class="borderv2" style="padding-top: 0; padding-bottom: 0; cursor: pointer;" onclick="window.location='/login'">Login</button>
+        </div>
+      </header>
+      <div class="container">
+      <div class="l">
+        <div class="">
+          <h1>Manage your projects</h1>
+          Stick your tasks, drop your docs, and chat it out—all in one place! With a sleek Kanban board, a handy document hub, and built-in chat, teamwork has never been this smooth (or this fun)!
+        </div>
+      </div>
+      <div class="r">
+        <div id="kanbanBoard">
+          <div class="borderv3" id="todoColumn">
+            <div style="background-color: #d3e3f3"></div>
+            <h1>To do</h1>
+            <div id="todoTasks">
+              <div class="borderv2" draggable="true" id="task4">
+                <div></div>
+                <h2>-----</h2>
+                <p>
+                  -------------------------------------------------------------
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="borderv2" id="inProgressColumn">
+            <div style="background-color: #ddf0b9"></div>
+            <h1>In Progress</h1>
+            <div id="inProgressTasks">
+              <div class="borderv1" draggable="true" id="task2">
+                <div></div>
+                <h2>-----</h2>
+                <p>
+                  ---------------------------------------------------------
+                </p>
+              </div>
+              <div class="borderv2" draggable="true" id="task3">
+                <div></div>
+                <h2>-------</h2>
+                <p>
+                  ----------------------------------------------------------------------------------------------------
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="borderv1" id="completedColumn">
+            <div style="background-color: #c0f0be"></div>
+            <h1>Completed</h1>
+            <div id="completedTasks">
+              <div class="borderv3" draggable="true" id="task1">
+                <div></div>
+                <h2>---------</h2>
+                <p>
+                  -------------------------------------------------------------------
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="ganttChart" class="hidden">
+            <h3>Gantt Chart</h3>
+            <div id="ganttTasks"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+      </div>
+      </div>  
+</body>
+</html>

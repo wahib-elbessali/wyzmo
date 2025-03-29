@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+    <link rel="stylesheet" href="/public/css/global.css" />
+    <link rel="stylesheet" href="/public/css/professeur.css" />
+  </head>
+  <body>
+    <header class="bottom-border">
+      <div></div>
+      <div>
+        <h1>Wyzmo</h1>
+      </div>
+      <div class="header-right">
+        <div id="profileButton" class="circlev1">
+            <div></div>
+            W   
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <aside class="right-border">
+        <div></div>
+        <h2>Projects</h2>
+        <div id="newProject">
+          <div class="circlev1">
+            <div></div>
+            <div>+</div>
+          </div>
+          <div>New Project</div>
+        </div>
+        <input
+          type="text"
+          placeholder="Search"
+          class="borderv2"
+          id="projectsSearch"
+        />
+        <nav>
+          <ul>
+            <li>
+              <details>
+                <summary class="project-name">----</summary>
+                <div class="workspace-chat">
+                  <button class="borderv1">
+                    <div></div>
+                    ---
+                  </button>
+                  <button class="borderv2">---</button>
+                </div>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary class="project-name">----</summary>
+                <div class="workspace-chat">
+                  <button class="borderv1">---</button>
+                  <button class="borderv2">---</button>
+                </div>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary class="project-name">----</summary>
+                <div class="workspace-chat">
+                  <button class="borderv2">---</button>
+                  <button class="borderv1">---</button>
+                </div>
+              </details>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main>
+        <div class="main-top">
+          <div class="name-search">
+            <h1 id="title">----------</h1>
+            <div class="tabs">
+            <!---<div class="tabs">
+              <button id="kanbanTab" class="bottom-border">Kanban</button>
+              <button id="ganttTab" class="bottom-border">Gantt</button>
+            </div>
+            <input type="text" placeholder="Search" class="borderv2" />--->
+          </div>
+        </div>
+
+        <div id="mainComponent">
+          <h1>Select a projet to start working</h1>
+        </div>
+
+        <div id="chatComponent">
+          <div class="">
+            <div id="messageList">
+
+            </div>
+            <div id="footer">
+              <input type="text" placeholder="Write your message" id="message" class="borderv1">
+              <button id="sendMessage" class="borderv1">Send</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="docsComponent">
+          <div class="">
+            <div class="docsTop">
+              <h1>Documents</h1>
+              <div id="newDoc">
+                <div class="circlev1">
+                  <div></div>
+                  <div>+</div>
+                </div>
+                <div>New Document</div>
+                <!-- Hidden file input -->
+                <input type="file" id="fileInput" style="display: none;" />
+              </div>
+            </div>
+            <div id="docsList"></div>
+          </div>
+        </div>
+
+        <div id="aboutComponent">
+          <div>
+            <div class="progressStuff">
+              <h2 id="progress">Progress: 10%</h2>
+              <div id="progressBar" class="borderv1">
+                <div id="progressBarInk"></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="leftPart">
+              <h2>Description</h2>
+              <p id="description"></p>
+            </div>
+            <div class="rightPart">
+              <h2>Contributors</h2>
+              <div class="contributorContainer borderv3">
+                <div></div>
+                <div class="topPart">
+                <div id="addContributor">
+                  <div class="circlev1">
+                    <div></div>
+                    <div>+</div>
+                  </div>
+                  <div>Add Contributor</div>
+                </div>
+                <input type="text" class="borderv1" id="colaboratorSearch" placeholder="Search by email">
+                </div>
+                <div id="contributorsList">
+                  
+                </div>
+
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div id="kanbanComponents">
+          <div class="kanban-legend">
+            <div class="">
+              <div class="legend-item">
+                <div class="circlev1">
+                  <div
+                    class=""
+                    style="background-color: #aae5af"
+                  ></div>
+                </div>
+                <span>Low Priority</span>
+              </div>
+              <div class="legend-item">
+                <div class="circlev2">
+                  <div
+                    class=""
+                    style="background-color: #f5d99a"
+                  ></div>
+                </div>
+                <span>Medium Priority</span>
+              </div>
+              <div class="legend-item">
+                <div class="circlev3">
+                  <div
+                    class=""
+                    style="background-color: #f1879e"
+                  ></div>
+                </div>
+                <span>High Priority</span>
+              </div>
+            </div>
+            <div id="newTask">
+              <div class="circlev1">
+                <div></div>
+                <div>+</div>
+              </div>
+              <div>New Task</div>
+            </div>
+          </div>
+
+          <div id="kanbanBoard">
+            <div class="borderv3" id="todoColumn">
+              <div style="background-color: #d3e3f3"></div>
+              <h1>To do</h1>
+              <div id="todoTasks">
+                <div class="borderv2" draggable="true" id="task4">
+                  <div></div>
+                  <div
+                    class="importance circlev1"
+                    style="background-color: #f5d99a"
+                  >
+                    <div></div>
+                  </div>
+                  <h2>-----</h2>
+                  <p>
+                    -------------------------------------------------------------
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="borderv2" id="inProgressColumn">
+              <div style="background-color: #ddf0b9"></div>
+              <h1>In Progress</h1>
+              <div id="inProgressTasks">
+                <div class="borderv1" draggable="true" id="task2">
+                  <div></div>
+                  <div
+                    class="importance circlev1"
+                    style="background-color: rgb(170, 229, 175)"
+                  >
+                    <div></div>
+                  </div>
+                  <h2>-----</h2>
+                  <p>
+                    ---------------------------------------------------------
+                  </p>
+                </div>
+                <div class="borderv2" draggable="true" id="task3">
+                  <div></div>
+                  <div
+                    class="importance circlev1"
+                    style="background-color: rgb(241, 135, 158)"
+                  >
+                    <div></div>
+                  </div>
+                  <h2>-------</h2>
+                  <p>
+                    ----------------------------------------------------------------------------------------------------
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="borderv1" id="completedColumn">
+              <div style="background-color: #c0f0be"></div>
+              <h1>Completed</h1>
+              <div id="completedTasks">
+                <div class="borderv3" draggable="true" id="task1">
+                  <div></div>
+                  <div
+                    class="importance circlev1"
+                    style="background-color: rgb(170, 229, 175)"
+                  >
+                    <div></div>
+                  </div>
+                  <h2>---------</h2>
+                  <p>
+                    -------------------------------------------------------------------
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div id="ganttChart" class="hidden">
+              <h3>Gantt Chart</h3>
+              <div id="ganttTasks"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="taskModal" class="modal">
+      <div class="modal-content borderv2">
+        <div class=""></div>
+        <div class="modal-header">
+          <h2 id="taskModalTitle" style="margin-bottom: 0;"></h2>
+          <div class="task-assignee">
+            <span id="taskModalAssignee"></span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div id="taskPriorityIndicator" class=" circlev1 importance"> <div id="in"></div></div>
+          <div class="task-description">
+            <p id="taskModalDescription" style="font-size: x-large;"></p>
+          </div>
+          <div class="task-dates">
+            <div><strong>Start Date:</strong> <span id="taskModalStartDate"></span></div>
+            <div><strong>End Date:</strong> <span id="taskModalEndDate"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="projectModal" class="modal">
+      <div class="modal-content borderv1">
+        <div></div>
+        <h2>New Project</h2>
+        <label for="projectNameInput">Name:</label>
+        <input type="text" id="projectNameInput" class="borderv1" />
+        <div class="dates">
+          <div>
+            <label>Starting Date</label>
+            <label class="date-picker-label">
+              <input type="date" id="startingDate" class="borderv2" />
+            </label>
+          </div>
+          <div>
+            <label>Ending Date</label>
+            <label class="date-picker-label">
+              <input type="date" id="endingDate" class="borderv2" />
+            </label>
+          </div>
+        </div>
+        <label for="projectTextInput">Description:</label>
+        <textarea
+          id="projectTextInput"
+          class="borderv2"
+          placeholder="Resize it accordingly"
+        ></textarea>
+        <button id="newProjectButton" class="borderv2">Create Project</button>
+      </div>
+    </div>
+
+    <div id="colaboratorModal" class="modal">
+      <div class="modal-content borderv1">
+        <div class=""></div>
+        <h2>Add Collaborator</h2>
+        <input 
+          type="text" 
+          id="collaboratorSearchInput" 
+          class="borderv1" 
+          placeholder="Search by email"
+        />
+        <div id="searchResults"></div>
+        <button id="addCollaboratorsButton" class="borderv2">AddCollaborators</button>
+      </div>
+    </div>
+
+    <!-- Task Creation Modal -->
+  <div id="taskCreationModal" class="modal">
+    <div class="modal-content borderv1">
+        <div class=""></div>
+        <h2>New Task</h2>
+        <label for="taskName">Name:</label>
+        <input type="text" id="taskName" placeholder="Task Name" class="borderv2" style="margin-bottom: 20px;">
+        <div class="dates">
+          <div>
+            <label>Starting Date</label>
+            <label class="date-picker-label">
+              <input type="date" id="taskStartDate" class="borderv2" />
+            </label>
+          </div>
+          <div>
+            <label>Ending Date</label>
+            <label class="date-picker-label">
+              <input type="date" id="taskEndDate" class="borderv2" />
+            </label>
+          </div>
+        </div>
+        <div class="dates">
+          <div class="">
+            <label for="assigneeSelect">Assignee:</label>
+            <select id="assigneeSelect" class="borderv2"></select>
+          </div>
+          <div class="">
+            <label for="taskPriority">Priority:</label>
+            <select id="taskPriority" class="borderv2">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+          </select>
+          </div>
+        </div>
+        <label for="taskDescription">Description:</label>
+        <textarea id="taskDescription" placeholder="Description" class="borderv2"></textarea>
+        <button id="createTaskButton" class="borderv2">Create Task</button>
+    </div>
+</div>
+
+    <div class="profile" id="profilePopup">
+      <p id="profile">My Profile</p>
+      <p id="logout">Logout</p>
+    </div>
+
+    <script src="/public/js/professeur.js"></script>
+  </body>
+</html>
