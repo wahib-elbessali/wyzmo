@@ -32,6 +32,13 @@ A full-stack web application designed to streamline academic project management 
 | 💬 Real-time Chat | Integrated messaging with history |
 | 🔍 Smart Search | Find projects and team members quickly |
 
+## Screenshots 📸
+![Screenshot](./screenshots/1.png)
+![Screenshot](./screenshots/2.png)
+![Screenshot](./screenshots/3.png)
+![Screenshot](./screenshots/4.png)
+![Screenshot](./screenshots/5.png)
+
 ### Technical Highlights
 - Hand-drawn sketch-style UI theme
 - Real-time updates via WebSockets (Ably.io)
